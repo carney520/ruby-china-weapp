@@ -1,0 +1,40 @@
+<template name="list-item">
+  <view class="list-item" hover-class="list-item-hover" data-id="{{id}}">
+    <view class="list-item__head">
+      <view class="user-info">
+        <image src="{{user.avatar_url}}" />
+        <text>{{user.name || user.login}}</text>
+      </view>
+      <text class="category">{{node_name}}</text>
+    </view>
+    <view class="list-item__body">
+      <text class="title">{{title}}</text>
+      <text class="reply">{{replies_count}}</text>
+    </view>
+  </view>
+</template>
+<view class="nav-bar">
+  <view style="height: {{statusBarHeight}}px"></view>
+  <view class="nav-bar__body">
+    <view class="nav-bar__icon">
+      <image src="./_ionicons_svg_md-person.svg" />
+      <text>登录</text>
+    </view>
+    <view class="nav-bar__icon">
+      <image src="./_ionicons_svg_ios-search.svg" />
+    </view>
+    <view class="nav-bar__icon">
+      <image src="./_ionicons_svg_ios-funnel.svg" />
+    </view>
+  </view>
+</view>
+<view class="container">
+  <view class="empty" wx:if="{{topics.length === 0 && noMore}}">🦖暂无帖子</view>
+  <block wx:for="{{topics}}" wx:key="id">
+    <template is="list-item" data="{{...item}}"></template>
+  </block>
+  <view class="footer loading" wx:if="{{loading}}">
+    <loading size="24px" type="spinner" />
+    <text>加载中...</text>
+  </view>
+</view>

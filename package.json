@@ -1,0 +1,18 @@
+{
+  "name": "ruby-china-weapp",
+  "description": "ruby-china 小程序客户端",
+  "version": "0.1.0",
+  "scripts": {
+    "watch": "tsc --watch",
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.5.1",
+    "simple-oauth2": "^2.2.1",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "qs": "^6.6.0",
+    "vant-weapp": "^0.5.3"
+  }
+}
