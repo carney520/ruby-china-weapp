@@ -1,8 +1,8 @@
 <template name="list-item">
-  <view class="list-item" hover-class="list-item-hover" data-id="{{id}}">
+  <view class="list-item" hover-class="list-item-hover" data-id="{{id}}" bind:tap="handleItemClick">
     <view class="list-item__head">
       <view class="user-info">
-        <image src="{{user.avatar_url}}" />
+        <image src="{{user.avatar_url}}" lazy-load="{{true}}" />
         <text>{{user.name || user.login}}</text>
       </view>
       <text class="category">{{node_name}}</text>

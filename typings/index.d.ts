@@ -10,3 +10,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /// <reference path="./lib.wa.es6.d.ts" />
 /// <reference path="./wx/index.d.ts" />
+/// <reference path="./model.d.ts" />
+
+interface WxEventTarget<D = {}> {
+  id: string
+  tagName: string
+  dataset: D
+}
+
+/**
+ * 基础事件对象
+ */
+interface WXBaseEvent<D = {}> {
+  type: string
+  timeStamp: number
+  currentTarget: WxEventTarget<D>
+  target: WxEventTarget<any>
+}
+
+interface WXCustomEvent<D = {}, T = {}> extends WXBaseEvent<D> {
+  detail: T
+}
+
+interface WXTouch {
+  identifier: number
+  pageX: number
+  pageY: number
+  clientX: number
+  clientY: number
+}
+
+interface WXTouchEvent<D = {}> extends WXBaseEvent<D> {
+  touches: Array<WXTouch>
+  changedTouches: Array<WXTouch>
+}

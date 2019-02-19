@@ -2,28 +2,6 @@
 //获取应用实例
 import { get } from '../../request'
 
-export interface User {
-  id: number
-  login: string
-  name: string
-  avatar_url: string
-}
-
-export interface Topic {
-  id: number
-  title: string
-  node_name: string
-  node_id: number
-  excellent: boolean
-  deleted: boolean
-  replies_count: number
-  likes_count: number
-  created_at: string
-  replied_at: string
-  updated_at: string
-  user: User
-}
-
 const SystemInfo = wx.getSystemInfoSync()
 
 Page({
@@ -78,6 +56,12 @@ Page({
 
   async handleRetry() {
     this.onReachBottom()
+  },
+
+  handleItemClick(evt: WXBaseEvent<{ id: number }>) {
+    wx.navigateTo({
+      url: `../detail/detail?id=${evt.currentTarget.dataset.id}`
+    })
   },
 
   /**
