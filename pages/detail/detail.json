@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "wemark": "../../lib/wemark/wemark"
+  },
   "navigationStyle": "default",
   "navigationBarTitleText": "详情"
 }

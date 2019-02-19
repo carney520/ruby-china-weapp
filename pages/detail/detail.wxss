@@ -1,1 +1,35 @@
-/* pages/article/article.wxss */
+.detail .header {
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.detail .title {
+  margin-top: 10rpx;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.detail .avatar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: gray;
+}
+
+.detail .avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+}
+
+.detail .meta {
+  font-size: 13px;
+  margin-top: 8rpx;
+  color: gray;
+}
+
+.detail .user {
+  color: #444;
+}

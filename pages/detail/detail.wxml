@@ -1,2 +1,46 @@
-<!--pages/article/article.wxml-->
-<text>pages/article/article.wxml</text>
+<wxs module="timeago" src="../../wxs/timeago.wxs"></wxs>
+<template name="placeholder">
+  <view class="placeholder">
+    <view class="row">
+      <view class="left small circle" />
+      <view class="right short line" />
+    </view>
+    <view class="long line" style="font-size: 1.3em; margin-bottom: 0.1em" />
+    <view class="row" style="margin-bottom: 1px">
+      <view class="tiny line" />
+      <view class="tiny line" />
+      <view class="tiny line" />
+    </view>
+    <view class="separator" style="margin-bottom: 1em"></view>
+    <view class="line" />
+    <view class="medium line" />
+    <view class="line" />
+    <view class="short line" />
+    <view class="long line" />
+    <view class="medium line" />
+  </view>
+</template>
+<block wx:if="{{loading}}">
+  <template is="placeholder"></template>
+</block>
+<block wx:elif="{{!!topic}}">
+  <view class="detail">
+    <view class="header">
+      <view class="avatar-row">
+        <image class="avatar" src="{{topic.user.avatar_url}}" />
+        <text>{{topic.node_name}}</text>
+      </view>
+      <view class="title">{{topic.title}}</view>
+      <view class="meta">
+        <text class="user">{{topic.user.name || topic.user.login}}</text>
+        ·
+        <text>{{timeago.format(topic.created_at)}}</text>
+        ·
+        <text>{{topic.hits}}次阅读</text>
+      </view>
+    </view>
+    <view class="body">
+      <wemark md="{{topic.body}}" type="wemark" highlight></wemark>
+    </view>
+  </view>
+</block>

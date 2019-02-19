@@ -8,7 +8,9 @@ Page({
   /**
    * Page initial data
    */
-  data: {} as {
+  data: {
+    loading: true
+  } as {
     loading?: boolean
     id: string
     topic?: TopicDetail
@@ -30,7 +32,11 @@ Page({
       const detail = await get<{ meta: TopicMeta; topic: TopicDetail }>(url)
       this.setData!({ topic: detail.topic, meta: detail.meta })
     } catch (err) {
-      this.setData!({ loading: false })
+      // TODO: 异常处理
+    } finally {
+      setTimeout(() => {
+        this.setData!({ loading: false })
+      }, 500)
     }
   },
 
