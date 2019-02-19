@@ -20,6 +20,46 @@
     <view class="medium line" />
   </view>
 </template>
+<template name="reply">
+  <view class="reply">
+    <block wx:if="{{action === 'excellent'}}">
+      <view class="head">
+        <view class="user">
+          <image src="{{user.avatar_url}}" />
+          <text>{{user.name || user.login}}</text>
+        </view>
+        <text class="action">将本帖设为了精华帖</text>
+        <view class="float-right">
+          <text class="time">{{timeago.format(created_at)}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{deleted}}">
+      <text class="action deleted">已删除</text>
+    </block>
+    <block wx:else>
+      <view>
+        <view class="head">
+          <view class="user">
+            <image src="{{user.avatar_url}}" />
+            <text>{{user.name || user.login}}</text>
+          </view>
+          <view class="float-right">
+            <text class="float">#{{index}}</text>
+            <text class="time">· {{timeago.format(created_at)}}</text>
+          </view>
+        </view>
+        <view class="body">
+          <wemark md="{{body}}"></wemark>
+        </view>
+        <view class="like">
+          <image src="{{liked ? './_ionicons_svg_md-heart.svg' : './_ionicons_svg_md-heart-empty.svg'}}" />
+          <text wx:if="{{!!likes_count}}">{{likes_count}}个赞</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
 <block wx:if="{{loading}}">
   <template is="placeholder"></template>
 </block>
@@ -42,5 +82,9 @@
     <view class="body">
       <wemark md="{{topic.body}}" type="wemark" highlight></wemark>
     </view>
+  </view>
+  <view class="gap"></view>
+  <view class="replies">
+    <template is="reply" wx:for="{{replies}}" wx:key="id" data="{{...item, index: index}}"></template>
   </view>
 </block>

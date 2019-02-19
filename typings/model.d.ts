@@ -36,3 +36,19 @@ interface TopicDetail extends Topic {
   // html
   body_html: string
 }
+
+interface Reply {
+  action?: string
+  body: string
+  body_html: string
+  created_at: string
+  deleted: boolean
+  id: number
+  likes_count: number
+  target_type?: string
+  topic_id: number
+  updated_at: string
+  user: User
+  // 已喜欢
+  liked: boolean
+}
