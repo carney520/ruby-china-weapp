@@ -1,4 +1,5 @@
 import OAuth from './utils/oauth'
+import { IApp } from './app'
 import { reenterablePromise } from './utils/util'
 
 export type Method = wx.RequestOption['method']
@@ -40,14 +41,16 @@ const ErrorMessage: { [key: string]: string } = {
 
 /**
  * 登录
- * TODO: 获取用户信息
  */
 export async function login(username: string, password: string) {
   try {
     await auth.password.getToken({ username, password })
   } catch (err) {
     if (err instanceof OAuth.RequestError) {
-      err.message = ErrorMessage[err.message] || err.message
+      err.message =
+        err.status === 401
+          ? '用户名或密码错误'
+          : ErrorMessage[err.message] || err.message
     }
     throw err
   }
@@ -82,7 +85,8 @@ export default async function request<R = any>(
           res(result.data as R)
         } else if (statusCode === 401 && retry) {
           // 重试
-          auth.clearToken()
+          const app = getApp<IApp>()
+          app.logout()
           request(method, path, params, false).then(res, rej)
         } else {
           rej(
@@ -95,7 +99,7 @@ export default async function request<R = any>(
         }
       },
       fail: err => {
-        const errStr = err.errMsg.trim() 
+        const errStr = err.errMsg.trim()
         rej(new Error(ErrorMessage[errStr] || errStr))
       }
     })

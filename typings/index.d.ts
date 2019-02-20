@@ -44,3 +44,5 @@ interface WXTouchEvent<D = {}> extends WXBaseEvent<D> {
   touches: Array<WXTouch>
   changedTouches: Array<WXTouch>
 }
+
+interface WxSubmitEvent<D> extends WXCustomEvent<{}, { value: D }> {}

@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/user/user",
+    "pages/login/login"
   ],
   "window": {
     "navigationStyle": "custom",

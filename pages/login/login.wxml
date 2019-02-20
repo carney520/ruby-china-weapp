@@ -1,0 +1,9 @@
+<!-- pages/login/login.wxml -->
+<view class="login">
+  <view class="title">Ruby China</view>
+  <form class="body" bindsubmit="handleSubmit">
+    <input placeholder="Username / Email" name="account" value="{{account}}" />
+    <input placeholder="Password" password name="password" />
+    <button form-type="submit" loading="{{loading}}">登录</button>
+  </form>
+</view>

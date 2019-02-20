@@ -159,10 +159,6 @@ export default class OAuth {
     return this.getToken()
   }
 
-  public clearToken() {
-    wx.removeStorageSync(STORAGE_KEY)
-  }
-
   /**
    * 判断是否可以刷新. 客户端是无法获取到refreshToken的
    */
@@ -271,6 +267,10 @@ export default class OAuth {
     return undefined
   }
 
+  public clearToken() {
+    wx.removeStorageSync(STORAGE_KEY)
+  }
+
   // TODO: 支持配置
   private rawRequest(url: string, header: Record, payload: any) {
     return new Promise<any>((res, rej) => {
@@ -285,7 +285,11 @@ export default class OAuth {
             res(result.data)
           } else {
             rej(
-              new OAuth.RequestError(statusCode, statusCode.toString(), result.data)
+              new OAuth.RequestError(
+                statusCode,
+                statusCode.toString(),
+                result.data
+              )
             )
           }
         },

@@ -1,0 +1,35 @@
+<wxs module="timeago" src="../../wxs/timeago.wxs"></wxs>
+<view class="user">
+  <block wx:if="{{!!currentUser}}">
+    <view class="head">
+      <view>
+        <view class="name">{{currentUser.name || currentUser.login}}</view>
+        <view class="desc">
+          第 {{currentUser.id}} 位会员 · {{timeago.format(currentUser.created_at)}}
+        </view>
+      </view>
+      <image class="avatar" src="{{currentUser.avatar_url}}" />
+    </view>
+    <view class="body">
+      <view class="tabs">
+        <view hover-class="hover">{{currentUser.following_count}} 正在关注</view>
+        <view hover-class="hover">{{currentUser.followers_count}} 关注者</view>
+        <view hover-class="hover">{{currentUser.favorites_count}} 收藏</view>
+      </view>
+    </view>
+    <view class="footer">
+      <button bind:tap="handleLogout">退出</button>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="head">
+      <view class="name">未登录</view>
+    </view>
+    <view class="body"></view>
+    <view class="footer">
+      <navigator url="../login/login">
+        <button>登录</button>
+      </navigator>
+    </view>
+  </block>
+</view>

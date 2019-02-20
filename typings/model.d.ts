@@ -5,6 +5,30 @@ interface User {
   avatar_url: string
 }
 
+interface UserDetail {
+  avatar_url: string
+  bio?: string
+  company?: string
+  created_at: string
+  email: string
+  favorites_count: number
+  followers_count: number
+  following_count: number
+  replies_count: number
+  topics_count: number
+  github?: string
+  id: number
+  level: string
+  level_name: string
+  location: string
+  login: string
+  name: string
+  // 一段话的简单个人介绍
+  tagline?: string
+  twitter?: string
+  website?: string
+}
+
 interface Topic {
   id: number
   title: string
