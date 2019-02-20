@@ -83,6 +83,18 @@
       <wemark md="{{topic.body}}" type="wemark" highlight></wemark>
     </view>
   </view>
+  <view class="actions">
+    <view class="action {{meta.liked ? 'active' : ''}}" hover-class="hover" bind:tap="handleToggleLiked">
+      <image src="{{meta.liked ? './_ionicons_svg_md-heart.svg' : './_ionicons_svg_md-heart-empty.svg'}}" />
+      <text>{{topic.likes_count}}</text>
+    </view>
+    <view class="action {{meta.favorited ? 'active' : ''}}" hover-class="hover" bind:tap="handleToggleFavorited">
+      <image src="{{meta.favorited ? './_ionicons_svg_ios-star.svg' : './_ionicons_svg_ios-star-outline.svg'}}" />
+    </view>
+    <view class="action {{meta.followed ? 'active' : ''}}" hover-class="hover" bind:tap="handleToggleFollowed">
+      <image src="{{meta.followed ? './_ionicons_svg_md-notifications.svg' : './_ionicons_svg_md-notifications-off.svg'}}" />
+    </view>
+  </view>
   <view class="gap"></view>
   <view class="replies">
     <template is="reply" wx:for="{{replies}}" wx:key="id" data="{{...item, index: index}}"></template>

@@ -1,3 +1,23 @@
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5)
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5)
+  }
+
+  70% {
+    transform: scale(0.9)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
+
 .detail .header {
   padding: 30rpx 40rpx;
   border-bottom: 1rpx solid #eee;
@@ -38,6 +58,54 @@
   background-color: #EEE;
   height: 20px;
 }
+
+.replies {
+  margin-bottom: 100rpx;
+}
+
+/**
+ * 操作
+ */
+.actions {
+  position: fixed;
+  right: 30rpx;
+  bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions .action {
+  width: 33px;
+  height: 33px;
+  border-radius: 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  margin-bottom: 20rpx;
+}
+
+.actions .action.hover {
+  opacity: 0.8;
+}
+
+.actions .action.active image {
+  animation: bounceIn 0.4s ease 0s;
+}
+
+.actions text {
+  font-size: 9px;
+  margin-top: -3px;
+}
+
+.actions image {
+  width: 20px;
+  height: 20px;
+}
+
 
 /**
  * 评论
@@ -97,7 +165,7 @@
   color: #24A11B;
 }
 
-.reply .like  {
+.reply .like {
   display: flex;
   justify-content: flex-end;
   align-items: center;

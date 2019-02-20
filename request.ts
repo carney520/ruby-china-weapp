@@ -62,7 +62,7 @@ export async function login(username: string, password: string) {
 export default async function request<R = any>(
   method: Method,
   path: string,
-  params: { [key: string]: string } = {},
+  params: { [key: string]: any } = {},
   retry: boolean = true
 ): Promise<R> {
   let token = auth.retrieveToken()

@@ -1,19 +1,18 @@
 /**
  * 话题详情
  */
-import { get } from '../../request'
+import request, { get, post } from '../../request'
+import { IApp } from '../../app'
 
 const REPLY_LIMIT = 20
+const app = getApp<IApp>()
 
-// pages/article/article.js
 Page({
-  /**
-   * Page initial data
-   */
   data: {
     loading: true,
     repliesLoading: false,
     noMoreReplies: false,
+    currentUser: app.globalData.user,
     replies: []
   } as {
     loading: boolean
@@ -23,14 +22,25 @@ Page({
     meta?: TopicMeta
     replies: Reply[]
     noMoreReplies: boolean
+    currentUser?: UserDetail
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad(query?: { id: string }) {
+    app.onUserStateChange(this.handleUserStateChange)
     this.setData!({ id: query!.id || 38057 })
     this.loadDetail()
+    this.loadReplies()
+  },
+
+  onUnload: function() {
+    app.offUserStateChange(this.handleUserStateChange)
+  },
+
+  onReady: function() {},
+
+  onPullDownRefresh: function() {},
+
+  onReachBottom() {
     this.loadReplies()
   },
 
@@ -86,32 +96,68 @@ Page({
     }
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function() {},
+  async checkLogin() {
+    if (!!this.data.currentUser) {
+      return true
+    } else {
+      wx.navigateTo({ url: '../login/login' })
+      return false
+    }
+  },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function() {},
+  async handleToggleLiked() {
+    if (!this.checkLogin()) {
+      return
+    }
+    try {
+      const url = `/api/v3/likes`
+      const liked = !this.data.meta!.liked
+      const params = { obj_type: 'topic', obj_id: this.data.id }
+      const { count } = await request<{ count: number }>(
+        liked ? 'POST' : 'DELETE',
+        url,
+        params
+      )
+      this.setData!({ 'topic.likes_count': count, 'meta.liked': liked })
+    } catch (err) {
+      wx.showToast({ title: `赞失败: ${err.message}`, icon: 'none' })
+    }
+  },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function() {},
+  async handleToggleFavorited() {
+    if (!this.checkLogin()) {
+      return
+    }
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function() {},
+    try {
+      const favorited = !this.data.meta!.favorited
+      const url = favorited
+        ? `/api/v3/topics/${this.data.id}/favorite`
+        : `/api/v3/topics/${this.data.id}/unfavorite`
+      await post(url)
+      this.setData!({ 'meta.favorited': favorited })
+    } catch (err) {
+      wx.showToast({ title: `收藏失败: ${err.message}`, icon: 'none' })
+    }
+  },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function() {},
+  async handleToggleFollowed() {
+    if (!this.checkLogin()) {
+      return
+    }
+    try {
+      const followed = !this.data.meta!.followed
+      const url = followed
+        ? `/api/v3/topics/${this.data.id}/follow`
+        : `/api/v3/topics/${this.data.id}/unfollow`
+      await post(url)
+      this.setData!({ 'meta.followed': followed })
+    } catch (err) {
+      wx.showToast({ title: `关注失败: ${err.message}`, icon: 'none' })
+    }
+  },
 
-  onReachBottom() {
-    this.loadReplies()
+  handleUserStateChange(user: UserDetail | null) {
+    this.setData!({ currentUser: user })
   }
 })
