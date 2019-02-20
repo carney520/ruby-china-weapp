@@ -52,8 +52,8 @@
         <view class="body">
           <wemark md="{{body}}"></wemark>
         </view>
-        <view class="like">
-          <image src="{{liked ? './_ionicons_svg_md-heart.svg' : './_ionicons_svg_md-heart-empty.svg'}}" />
+        <view class="like {{liked ? 'active' : ''}}">
+          <image src="{{liked ? './_ionicons_svg_md-heart.svg' : './_ionicons_svg_md-heart-empty.svg'}}" data-id="{{id}}" bind:tap="handleToggleLikeReply" />
           <text wx:if="{{!!likes_count}}">{{likes_count}}个赞</text>
         </view>
       </view>

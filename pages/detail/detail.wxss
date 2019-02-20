@@ -172,6 +172,10 @@
   font-size: 14px;
 }
 
+.reply .like.active image {
+  animation: bounceIn 0.4s ease 0s;
+}
+
 .reply .like image {
   width: 23px;
   height: 23px;

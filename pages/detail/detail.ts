@@ -96,12 +96,38 @@ Page({
     }
   },
 
-  async checkLogin() {
+  checkLogin() {
     if (!!this.data.currentUser) {
       return true
     } else {
       wx.navigateTo({ url: '../login/login' })
       return false
+    }
+  },
+
+  async handleToggleLikeReply(evt: WXBaseEvent<{ id: number }>) {
+    const id = evt.currentTarget.dataset.id
+    const idx = this.data.replies.findIndex(i => i.id == id)
+    if (idx === -1 || !this.checkLogin()) {
+      return
+    }
+
+    try {
+      const reply = this.data.replies[idx]
+      const liked = !reply.liked
+      const params = { obj_type: 'reply', obj_id: id }
+      const url = `/api/v3/likes`
+      const { count } = await request<{ count: number }>(
+        liked ? 'POST' : 'DELETE',
+        url,
+        params
+      )
+      this.setData!({
+        [`replies[${idx}].liked`]: liked,
+        [`replies[${idx}].likes_count`]: count
+      })
+    } catch (err) {
+      wx.showToast({ title: `赞失败: ${err.message}`, icon: 'none' })
     }
   },
 
