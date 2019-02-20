@@ -1,0 +1,9 @@
+<view class="reply">
+  <view class="title">{{title}}</view>
+  <form bind:submit="handleSubmit">
+    <view class="textarea-wrapper">
+      <textarea name="reply" auto-height auto-focus placeholder="回复" />
+    </view>
+    <button form-type="submit">提交</button>
+  </form>
+</view>

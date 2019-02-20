@@ -94,6 +94,9 @@
     <view class="action {{meta.followed ? 'active' : ''}}" hover-class="hover" bind:tap="handleToggleFollowed">
       <image src="{{meta.followed ? './_ionicons_svg_md-notifications.svg' : './_ionicons_svg_md-notifications-off.svg'}}" />
     </view>
+    <view class="action" hover-class="hover" bind:tap="handleReply">
+      <image src="./_ionicons_svg_ios-undo.svg" />
+    </view>
   </view>
   <view class="gap"></view>
   <view class="replies">

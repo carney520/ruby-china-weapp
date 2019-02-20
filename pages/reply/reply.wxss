@@ -1,0 +1,25 @@
+/* pages/reply/reply.wxss */
+.reply {
+  padding: 40rpx;
+}
+
+.reply .title {
+  font-size: 19px;
+  margin-bottom: 1em;
+}
+
+.reply .textarea-wrapper {
+  margin-left: -40rpx;
+  margin-right: -40rpx;
+}
+
+.reply textarea {
+  min-height: 6em;
+  width: 100%;
+  padding: 20rpx 40rpx;
+  background-color: #eee;
+}
+
+.reply button {
+  margin-top: 20px;
+}

@@ -1,5 +1,7 @@
 /**
  * 话题详情
+ * TODO: 滚动
+ * TODO: 分享
  */
 import request, { get, post } from '../../request'
 import { IApp } from '../../app'
@@ -25,15 +27,24 @@ Page({
     currentUser?: UserDetail
   },
 
+  lastAction: null as string | null,
+
   onLoad(query?: { id: string }) {
     app.onUserStateChange(this.handleUserStateChange)
-    this.setData!({ id: query!.id || 38057 })
+    this.setData!({ id: query!.id || 28042 })
     this.loadDetail()
     this.loadReplies()
   },
 
   onUnload: function() {
     app.offUserStateChange(this.handleUserStateChange)
+  },
+
+  async onShow() {
+    if (this.lastAction === 'reply') {
+      this.setData!({ noMoreReplies: false })
+      this.loadReplies()
+    }
   },
 
   onReady: function() {},
@@ -60,6 +71,7 @@ Page({
     }
   },
 
+  // TODO: 加载状态展示
   async loadReplies() {
     if (this.data.repliesLoading || this.data.noMoreReplies) {
       return
@@ -100,6 +112,7 @@ Page({
     if (!!this.data.currentUser) {
       return true
     } else {
+      this.lastAction = 'login'
       wx.navigateTo({ url: '../login/login' })
       return false
     }
@@ -181,6 +194,20 @@ Page({
     } catch (err) {
       wx.showToast({ title: `关注失败: ${err.message}`, icon: 'none' })
     }
+  },
+
+  // TODO: 处理评论未加载情况
+  async handleReply() {
+    if (!this.checkLogin()) {
+      return
+    }
+
+    this.lastAction = 'reply'
+    wx.navigateTo({
+      url: `../reply/reply?id=${this.data.id}&title=${encodeURIComponent(
+        this.data.topic!.title
+      )}`
+    })
   },
 
   handleUserStateChange(user: UserDetail | null) {
