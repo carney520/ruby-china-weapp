@@ -27,7 +27,7 @@
 <view class="nav-bar">
   <view style="height: {{statusBarHeight}}px"></view>
   <view class="nav-bar__body">
-    <navigator url="../user/user">
+    <navigator url="../me/me">
       <view class="nav-bar__icon">
         <image src="./_ionicons_svg_md-person.svg" />
       </view>
