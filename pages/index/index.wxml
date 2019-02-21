@@ -13,6 +13,17 @@
     </view>
   </view>
 </template>
+<template name="placeholder">
+  <view class="placeholder">
+    <view wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}" wx:key="*this">
+      <view class="row">
+        <view class="left small circle" />
+        <view class="right small tiny line" />
+      </view>
+      <view class="long rect" />
+    </view>
+  </view>
+</template>
 <view class="nav-bar">
   <view style="height: {{statusBarHeight}}px"></view>
   <view class="nav-bar__body">
@@ -31,7 +42,7 @@
   <scroll-view class="nodes-container" scroll-y>
     <block wx:if="{{nodeLoading}}">
       <view class="placeholder">
-        <view wx:for="{{[1, 2, 3, 4, 5, 6]}}" style="margin-bottom: 20px;">
+        <view wx:for="{{[1, 2, 3, 4, 5, 6]}}" style="margin-bottom: 20px;" wx:key="*this">
           <view class="small tiny line"></view>
           <view class="row">
             <view class="short line" />
@@ -58,16 +69,18 @@
         </view>
       </view>
     </block>
-    <block wx:elif="{{!!nodeLoadError}}">
-      <error-message message="加载失败: {{nodeLoadError.message}}" bind:retry="loadNode"></error-message>
+    <block wx:elif="{{!nodes || !!nodeLoadError}}">
+      <error-message message="节点加载失败: {{nodeLoadError.message || '网络错误'}}" bind:retry="loadNode"></error-message>
     </block>
   </scroll-view>
 </view>
 <view class="container">
+  <template wx:if="{{initialLoading}}" is="placeholder"></template>
   <view class="empty" wx:if="{{topics.length === 0 && noMore}}">🦖暂无帖子</view>
   <block wx:for="{{topics}}" wx:key="id">
     <template is="list-item" data="{{...item}}"></template>
   </block>
+  <error-message wx:if="{{!!error}}" message="列表加载失败: {{error.message || '网络错误'}}" bind:retry="handleRetry" />
   <view class="footer loading" wx:if="{{loading}}">
     <loading size="24px" type="spinner" />
     <text>加载中...</text>

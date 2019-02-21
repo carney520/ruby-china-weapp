@@ -7,8 +7,14 @@ export class RequestError {
   constructor(
     public status: number,
     public message: string,
-    public data: any
+    public data?: any
   ) {}
+  toJSON() {
+    return {
+      status: this.status,
+      message: this.message
+    }
+  }
 }
 
 export const HOST = 'https://ruby-china.org'
@@ -100,7 +106,7 @@ export default async function request<R = any>(
       },
       fail: err => {
         const errStr = err.errMsg.trim()
-        rej(new Error(ErrorMessage[errStr] || errStr))
+        rej(new RequestError(0, ErrorMessage[errStr] || errStr))
       }
     })
   })

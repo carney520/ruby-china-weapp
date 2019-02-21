@@ -21,6 +21,7 @@ Page({
     statusBarHeight: SystemInfo.statusBarHeight,
     topics: [],
     sort: SortTypes[0],
+    initialLoading: true,
     loading: false,
     nodeLoading: false,
     showNode: false,
@@ -33,6 +34,7 @@ Page({
     topics: Topic[]
     statusBarHeight: number
     error?: Error
+    initialLoading: boolean
     loading: boolean
     showNode: boolean
     nodeLoading: boolean
@@ -42,15 +44,8 @@ Page({
   },
 
   async onLoad() {
-    try {
-      wx.showLoading({ title: '加载中' })
-      await this.load(true)
-      this.loadNode()
-    } catch (err) {
-      wx.showToast({ title: err.message, icon: 'none' })
-    } finally {
-      wx.hideLoading({})
-    }
+    this.initialLoad()
+    this.loadNode()
   },
 
   onHide() {
@@ -103,7 +98,7 @@ Page({
       return
     }
     this.setData!({ sort, currentNode: null })
-    this.load(true)
+    this.initialLoad()
   },
 
   handleSelectNode(evt: WXBaseEvent<{ value: NodeDetail }>) {
@@ -113,10 +108,21 @@ Page({
       return
     }
     this.setData!({ currentNode: node, sort: null })
-    this.load(true)
+    this.initialLoad()
   },
 
   prevent() {},
+
+  async initialLoad() {
+    try {
+      this.setData!({ initialLoading: true })
+      await this.load(true)
+    } catch (err) {
+      this.setData!({ error: err })
+    } finally {
+      this.setData!({ initialLoading: false })
+    }
+  },
 
   /**
    * 列表加载

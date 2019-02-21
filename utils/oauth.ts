@@ -119,8 +119,14 @@ export default class OAuth {
     constructor(
       public status: number,
       public message: string,
-      public data: any
+      public data?: any
     ) {}
+    public toJSON() {
+      return {
+        status: this.status,
+        message: this.message
+      }
+    }
   }
 
   public clientCredentials = {
@@ -294,7 +300,7 @@ export default class OAuth {
           }
         },
         fail: err => {
-          rej(new Error(err.errMsg))
+          rej(new OAuth.RequestError(0, err.errMsg))
         }
       })
     })
