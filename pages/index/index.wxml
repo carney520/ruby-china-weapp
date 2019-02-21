@@ -23,13 +23,44 @@
     </navigator>
     <view class="nav-bar__icon" bind:tap="handleToggleShowNode">
       <image src="./_ionicons_svg_ios-funnel.svg" />
-      <text wx:if="{{showNode}}">关闭</text>
+      <text>{{showNode ? '关闭' : (sort ? sort.name : (currentNode ? currentNode.name : '')) }}</text>
     </view>
   </view>
 </view>
 <view class="nodes" wx:if="{{showNode}}" catchtouchmove="prevent">
   <scroll-view class="nodes-container" scroll-y>
-    <view style="background: red;height: 200vh; width: 10px;">x</view>
+    <block wx:if="{{nodeLoading}}">
+      <view class="placeholder">
+        <view wx:for="{{[1, 2, 3, 4, 5, 6]}}" style="margin-bottom: 20px;">
+          <view class="small tiny line"></view>
+          <view class="row">
+            <view class="short line" />
+            <view class="short line" />
+            <view class="short line" />
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{!!nodes}}">
+      <view class="node">
+        <view class="node__items">
+          <view wx:for="{{sortTypes}}" wx:key="id" class="node__item {{sort && sort.id === item.id ? 'active' : ''}}" hover-class="hover" data-value="{{item}}" bind:tap="handleSelectSort">
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      <view class="node" wx:for="{{nodes}}" wx:key="id">
+        <view class="node__section">{{item.name}}</view>
+        <view class="node__items">
+          <view wx:for="{{item.nodes}}" wx:for-item="node" wx:key="id" data-value="{{node}}" class="node__item {{currentNode.id === node.id ? 'active' : ''}}" hover-class="hover" bind:tap="handleSelectNode">
+            {{node.name}}
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{!!nodeLoadError}}">
+      <error-message message="加载失败: {{nodeLoadError.message}}" bind:retry="loadNode"></error-message>
+    </block>
   </scroll-view>
 </view>
 <view class="container">

@@ -42,7 +42,7 @@
   animation: placeholderShimmer 2s linear;
   animation-iteration-count: infinite;
   background-size: 1200px 100%;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(255, 255, 255, .45) 15%, rgba(0, 0, 0, 0) 30%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .45) 15%, rgba(255, 255, 255, 0) 30%);
 }
 
 

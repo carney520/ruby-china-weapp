@@ -76,3 +76,14 @@ interface Reply {
   // 已喜欢
   liked: boolean
 }
+
+interface NodeDetail {
+  id: number
+  name: string
+  section_id: number
+  section_name: string
+  sort: number
+  summary: string
+  topics_count: number
+  updated_at: string
+}

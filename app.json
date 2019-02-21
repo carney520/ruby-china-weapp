@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/user/user",
+    "pages/reply/reply",
     "pages/login/login"
   ],
   "window": {

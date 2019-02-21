@@ -22,6 +22,12 @@ declare namespace Component {
       /** setData引起的界面更新渲染完毕后的回调函数，最低基础库： `1.5.0` */
       callback?: () => void
     ): void
+
+    triggerEvent?(
+      name: string,
+      detail: any,
+      options?: { bubbles: boolean; composed: boolean }
+    ): void
   }
 
   interface ComponentInstance<D> extends ComponentInstanceBaseProps<D> {

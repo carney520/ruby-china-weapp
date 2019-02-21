@@ -1,0 +1,5 @@
+<view class="error">
+  <view class="emoji">😰</view>
+  <view class="message">{{message}}</view>
+  <view class="retry" bind:tap="handleRetry">重新加载</view>
+</view>

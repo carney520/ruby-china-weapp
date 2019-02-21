@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "loading": "vant-weapp/loading"
+    "loading": "vant-weapp/loading",
+    "error-message": "../../components/error-message"
   },
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark"
