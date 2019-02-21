@@ -1,0 +1,29 @@
+.user {
+  padding: 40rpx;
+}
+
+.buttons {
+  margin: 3em 1em;
+  border: 1px solid #444;
+  font-size: 14px;
+}
+
+.button {
+  text-align: center;
+  padding: 6px;
+}
+
+.button.hover {
+  opacity: 0.8;
+}
+
+.button image {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+.button.dim{
+  background-color: #111;
+  color: white;
+}

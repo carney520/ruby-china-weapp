@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "profile": "../../components/user-profile",
+    "error-message": "../../components/error-message"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default",
+  "navigationBarTitleText": ""
+}

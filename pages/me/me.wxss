@@ -10,30 +10,14 @@ page {
   box-sizing: border-box;
 }
 
-.user .head {
-  display: flex;
-  justify-content: space-between;
+.title {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .user .body {
   flex: 1;
   padding: 40rpx 0;
-}
-
-.user .name {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.user .desc {
-  font-size: 13px;
-  color: gray;
-}
-
-.user .avatar {
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 200rpx;
 }
 
 .user .tabs {

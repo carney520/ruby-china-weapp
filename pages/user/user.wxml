@@ -1,0 +1,30 @@
+<view class="user">
+  <block wx:if="{{!!user}}">
+    <profile user="{{user}}"></profile>
+    <view class="buttons">
+      <view class="button dim" hover-class="hover" bind:tap="toggleFollow">
+        <image src="./_ionicons_svg_md-person.svg" />
+        {{ meta.followed ? '取消关注': '关注' }}
+      </view>
+      <view class="button" hover-class="hover" bind:tap="toggleBlock">
+        <image src="./_ionicons_svg_ios-eye-off.svg" />
+        {{ meta.blocked ? '取消屏蔽': '屏蔽' }}
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{!!error}}">
+    <error-message message="加载失败: {{error.message}}" bind:retry="load"></error-message>
+  </block>
+  <block wx:if="{{loading}}">
+    <view class="placeholder" style="padding: 0;">
+      <view class="row">
+        <view class="left" style="height: 1.5em">
+          <view class="short line" style="height: 2em"></view>
+          <view />
+          <view class="small line"></view>
+        </view>
+        <view class="right circle" style="font-size: 67rpx"></view>
+      </view>
+    </view>
+  </block>
+</view>

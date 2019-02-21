@@ -1,0 +1,8 @@
+<wxs module="timeago" src="../../wxs/timeago.wxs"></wxs>
+<view class="profile">
+  <view>
+    <view class="name">{{user.name || user.login}}</view>
+    <view class="desc">第 {{user.id}} 位会员 · {{timeago.format(user.created_at)}}</view>
+  </view>
+  <image class="avatar" src="{{user.avatar_url}}" />
+</view>

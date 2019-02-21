@@ -2,13 +2,7 @@
 <view class="user">
   <block wx:if="{{!!currentUser}}">
     <view class="head">
-      <view>
-        <view class="name">{{currentUser.name || currentUser.login}}</view>
-        <view class="desc">
-          第 {{currentUser.id}} 位会员 · {{timeago.format(currentUser.created_at)}}
-        </view>
-      </view>
-      <image class="avatar" src="{{currentUser.avatar_url}}" />
+      <profile user="{{currentUser}}"></profile>
     </view>
     <view class="body">
       <view class="tabs">
@@ -22,9 +16,7 @@
     </view>
   </block>
   <block wx:else>
-    <view class="head">
-      <view class="name">未登录</view>
-    </view>
+    <view class="title">未登录</view>
     <view class="body"></view>
     <view class="footer">
       <navigator url="../login/login">

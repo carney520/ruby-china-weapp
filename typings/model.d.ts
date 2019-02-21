@@ -5,6 +5,11 @@ interface User {
   avatar_url: string
 }
 
+interface UserMeta {
+  blocked: boolean
+  followed: boolean
+}
+
 interface UserDetail {
   avatar_url: string
   bio?: string

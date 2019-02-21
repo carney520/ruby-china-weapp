@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "profile": "../../components/user-profile"
+  },
   "navigationStyle": "default",
   "navigationBarTitleText": ""
 }
