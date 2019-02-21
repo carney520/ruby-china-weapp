@@ -9,12 +9,16 @@ Page({
     statusBarHeight: SystemInfo.statusBarHeight,
     topics: [],
     loading: false,
+    nodeLoading: false,
+    showNode: false,
     noMore: false
   } as {
     topics: Topic[]
     statusBarHeight: number
     error?: Error
     loading: boolean
+    showNode: boolean
+    nodeLoading: boolean
     noMore: boolean
   },
 
@@ -27,6 +31,10 @@ Page({
     } finally {
       wx.hideLoading({})
     }
+  },
+
+  onHide() {
+    this.setData!({showNode: false})
   },
 
   async onReachBottom() {
@@ -63,6 +71,12 @@ Page({
       url: `../detail/detail?id=${evt.currentTarget.dataset.id}`
     })
   },
+
+  handleToggleShowNode() {
+    this.setData!({ showNode: !this.data.showNode })
+  },
+
+  prevent() {},
 
   /**
    * 列表加载

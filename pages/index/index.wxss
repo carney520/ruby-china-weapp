@@ -1,5 +1,8 @@
-page {
+.container {
+  width: 100%;
   padding-top: 68px;
+  box-sizing: border-box;
+  height: 100vh;
 }
 
 .nav-bar {
@@ -8,6 +11,7 @@ page {
   flex-direction: column;
   top: 0;
   width: 100%;
+  z-index: 100;
 }
 
 .nav-bar__body {
@@ -21,8 +25,8 @@ page {
   justify-content: center;
   padding: 6px 4px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  background-color: rgba(255, 255, 255, 0.7);
   min-width: 24px;
   margin-right: 5px;
 }
@@ -103,4 +107,21 @@ page {
   color: gray;
   word-spacing: 3px;
   padding: 50px 0;
+}
+
+.nodes {
+  box-sizing: border-box;
+  position: fixed;
+  padding-top: 68px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.nodes-container {
+  height: 100%;
 }

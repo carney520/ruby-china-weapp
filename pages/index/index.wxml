@@ -21,13 +21,16 @@
         <image src="./_ionicons_svg_md-person.svg" />
       </view>
     </navigator>
-    <view class="nav-bar__icon">
-      <image src="./_ionicons_svg_ios-search.svg" />
-    </view>
-    <view class="nav-bar__icon">
+    <view class="nav-bar__icon" bind:tap="handleToggleShowNode">
       <image src="./_ionicons_svg_ios-funnel.svg" />
+      <text wx:if="{{showNode}}">关闭</text>
     </view>
   </view>
+</view>
+<view class="nodes" wx:if="{{showNode}}" catchtouchmove="prevent">
+  <scroll-view class="nodes-container" scroll-y>
+    <view style="background: red;height: 200vh; width: 10px;">x</view>
+  </scroll-view>
 </view>
 <view class="container">
   <view class="empty" wx:if="{{topics.length === 0 && noMore}}">🦖暂无帖子</view>
