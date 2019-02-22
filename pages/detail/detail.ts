@@ -118,6 +118,15 @@ Page({
     }
   },
 
+  handleCheckUser(evt: WXBaseEvent<{ id: string }>) {
+    const id = evt.currentTarget.dataset.id
+    if (this.data.currentUser && this.data.currentUser.login === id) {
+      wx.navigateTo({ url: '../me/me' })
+    } else {
+      wx.navigateTo({ url: `../user/user?id=${id}` })
+    }
+  },
+
   async handleToggleLikeReply(evt: WXBaseEvent<{ id: number }>) {
     const id = evt.currentTarget.dataset.id
     const idx = this.data.replies.findIndex(i => i.id == id)
