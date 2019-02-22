@@ -2,20 +2,20 @@
 
 .wemark_wrapper {
 	margin: 10px 40rpx;
-	font-size: 32rpx;
-	line-height: 1.8em;
+	font-size: 15px;
+	line-height: 1.7;
 }
 
 .wemark_block_h1 {
 	font-weight: bold;
-	font-size: 40rpx;
+	font-size: 20px;
 	text-align: center;
 	margin-bottom: 1em;
 }
 
 .wemark_block_h2 {
 	font-weight: bold;
-	font-size: 40rpx;
+	font-size: 20px;
 	padding-bottom: .5em;
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -24,7 +24,7 @@
 
 .wemark_block_h3 {
 	font-weight: bold;
-	font-size: 36rpx;
+	font-size: 18px;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
@@ -32,6 +32,7 @@
 .wemark_block_h4,
 .wemark_block_h5,
 .wemark_block_h6 {
+	font-size: 15px;
 	font-weight: bold;
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -51,21 +52,33 @@
 }
 
 .wemark_block_blockquote_p {
+	position: relative;
+	font-size: 15px;
 	margin-top: 1em;
-	margin-bottom: 1em;
-	padding: 10px 0 10px 1em;
-	font-size: 28rpx;
-	background: #f0f0f0;
-	border-left: 5px solid #e0e0e0;
+	margin-bottom: 20px;
+	padding: 10px 0 10px 36px;
+	line-height: 1.45;
+	color: #999;
+}
+
+.wemark_block_blockquote_p::before {
+	content: "\201C";
+	display: block;
+	font-size: 35px;
+	position: absolute;
+	font-family: serif;
+	left: 0px;
+	top: 0px;
+	color: #aaa;
 }
 
 .wemark_block_ul_li_p::before {
-	content: '• ';
+	content: '▪ ';
 }
 
 .wemark_block_ul_li_ul_li_p::before,
 .wemark_block_ol_li_ul_li_p::before {
-	content: '◦ ';
+	content: '∙ ';
 }
 
 .wemark_block_ul_li_ul_li_p,
@@ -81,12 +94,18 @@
 
 .wemark_block_code {
 	display: block;
-	padding: 10px;
-	font-size: 28rpx;
-	line-height: 1.5em;
-	border: 1px solid #f0f0f0;
-	white-space: pre;
+	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	border: 0px;
+	border-top: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
+	margin: 0 -40rpx 15px -40rpx;
+	padding: 10px 15px;
+	color: #444;
 	overflow: auto;
+	border-radius: 0px;
+	white-space: pre;
 }
 
 .wemark_block_table {

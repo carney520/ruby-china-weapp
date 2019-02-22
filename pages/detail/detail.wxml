@@ -71,16 +71,16 @@
         <text>{{topic.node_name}}</text>
       </view>
       <view class="title">
-        <image src="../../assets/gem.svg" />
-        {{topic.title}}
+        <image wx:if="{{topic.excellent}}" src="../../assets/gem.svg" />
+        <text>{{topic.title}}</text>
       </view>
       <view class="meta">
-        <text class="user" bind:tap="handleCheckUser" data-id="{{topic.user.login}}">
+        <view class="user" bind:tap="handleCheckUser" data-id="{{topic.user.login}}" hover-class="underline">
           {{topic.user.name || topic.user.login}}
-        </text>
-        ·
+        </view>
+        <text>·</text>
         <text>{{timeago.format(topic.created_at)}}</text>
-        ·
+        <text>·</text>
         <text>{{topic.hits}}次阅读</text>
       </view>
     </view>

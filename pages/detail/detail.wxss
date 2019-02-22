@@ -33,8 +33,8 @@
 .detail .title image {
   width: 1em;
   height: 1em;
-  vertical-align: sub;
-  margin-right: 0.1em;
+  vertical-align: middle;
+  margin-right: 0.2em;
 }
 
 .detail .avatar-row {
@@ -58,6 +58,7 @@
 }
 
 .detail .user {
+  display: inline;
   color: #444;
 }
 
@@ -117,6 +118,7 @@
 .replies {
   margin-bottom: 200px;
 }
+
 .reply {
   padding: 20rpx 40rpx;
   border-bottom: 1rpx solid #eee;

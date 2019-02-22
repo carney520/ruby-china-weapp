@@ -3,3 +3,7 @@
 .float-right {
   float: right;
 }
+
+.underline {
+  text-decoration: underline;
+}
