@@ -9,6 +9,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.6);
   top: 0;
   width: 100%;
   z-index: 100;
@@ -29,6 +30,10 @@
   background-color: rgba(255, 255, 255, 0.7);
   min-width: 24px;
   margin-right: 5px;
+}
+
+.nav-bar__icon.hover {
+  background-color: #ccc;
 }
 
 .nav-bar__icon image {
@@ -78,6 +83,13 @@
 .list-item__body .title {
   flex: 1;
   font-size: 16px;
+}
+
+.list-item__body .title image{
+  width: 1em;
+  height: 1em;
+  vertical-align: sub;
+  margin-right: 0.4em;
 }
 
 .list-item__body .reply {

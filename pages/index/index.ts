@@ -1,5 +1,6 @@
-//index.js
-//获取应用实例
+/**
+ * 首页
+ */
 import { get } from '../../request'
 
 interface SortType {
@@ -117,6 +118,10 @@ Page({
     try {
       this.setData!({ initialLoading: true })
       await this.load(true)
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 0
+      })
     } catch (err) {
       this.setData!({ error: err })
     } finally {

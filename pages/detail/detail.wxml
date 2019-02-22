@@ -70,9 +70,14 @@
         <image class="avatar" src="{{topic.user.avatar_url}}" bind:tap="handleCheckUser" data-id="{{topic.user.login}}" />
         <text>{{topic.node_name}}</text>
       </view>
-      <view class="title">{{topic.title}}</view>
+      <view class="title">
+        <image src="../../assets/gem.svg" />
+        {{topic.title}}
+      </view>
       <view class="meta">
-        <text class="user" bind:tap="handleCheckUser" data-id="{{topic.user.login}}">{{topic.user.name || topic.user.login}}</text>
+        <text class="user" bind:tap="handleCheckUser" data-id="{{topic.user.login}}">
+          {{topic.user.name || topic.user.login}}
+        </text>
         ·
         <text>{{timeago.format(topic.created_at)}}</text>
         ·

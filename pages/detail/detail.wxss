@@ -30,6 +30,13 @@
   line-height: 1.4;
 }
 
+.detail .title image {
+  width: 1em;
+  height: 1em;
+  vertical-align: sub;
+  margin-right: 0.1em;
+}
+
 .detail .avatar-row {
   display: flex;
   justify-content: space-between;
@@ -85,6 +92,7 @@
 }
 
 .actions .action.hover {
+  background-color: #ccc;
   opacity: 0.8;
 }
 

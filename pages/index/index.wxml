@@ -8,7 +8,10 @@
       <text class="category">{{node_name}}</text>
     </view>
     <view class="list-item__body">
-      <text class="title">{{title}}</text>
+      <view class="title">
+        <image wx:if="{{!!excellent}}" src="../../assets/gem.svg" />
+        <text>{{title}}</text>
+      </view>
       <text class="reply">{{replies_count}}</text>
     </view>
   </view>
@@ -25,14 +28,15 @@
   </view>
 </template>
 <view class="nav-bar">
+  <view class="nav-bar__overlay" />
   <view style="height: {{statusBarHeight}}px"></view>
   <view class="nav-bar__body">
-    <navigator url="../me/me">
-      <view class="nav-bar__icon">
+    <navigator url="../me/me" hover-class="none">
+      <view class="nav-bar__icon" hover-class="hover">
         <image src="./_ionicons_svg_md-person.svg" />
       </view>
     </navigator>
-    <view class="nav-bar__icon" bind:tap="handleToggleShowNode">
+    <view class="nav-bar__icon" catch:tap="handleToggleShowNode" hover-class="hover">
       <image src="./_ionicons_svg_ios-funnel.svg" />
       <text>{{showNode ? '关闭' : (sort ? sort.name : (currentNode ? currentNode.name : '')) }}</text>
     </view>
