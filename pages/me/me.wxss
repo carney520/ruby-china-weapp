@@ -19,19 +19,3 @@ page {
   flex: 1;
   padding: 40rpx 0;
 }
-
-.user .tabs {
-  display: flex;
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 50rpx;
-}
-
-.user .tabs view {
-  text-align: center;
-  flex: 1;
-}
-
-.user .tabs view.hover {
-  opacity: 0.6;
-}

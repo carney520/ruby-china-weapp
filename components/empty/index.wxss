@@ -1,0 +1,17 @@
+/* components/empty/index.wxss */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+}
+
+.emoji {
+  font-size: 130rpx;
+}
+
+.message {
+  margin-top: 1em;
+  font-size: 15px;
+  color: #333;
+}

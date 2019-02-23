@@ -1,0 +1,24 @@
+/* pages/users/users.wxss */
+.users {}
+
+.user {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.user.hover {
+  background: #eee;
+}
+
+.avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 150rpx;
+}
+
+.name {
+  font-size: 40rpx;
+  margin-left: 20rpx;
+}

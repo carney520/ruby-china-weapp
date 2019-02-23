@@ -1,3 +1,4 @@
+import { UserListType } from '../../constants'
 /**
  * 用户简介
  */
@@ -19,5 +20,18 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {
+    handleOpenFollowing() {
+      const user = (this.properties.user as any) as User
+      wx.navigateTo({
+        url: `../users/users?id=${user.login}&type=${UserListType.Following}`
+      })
+    },
+    handleOpenFollowers() {
+      const user = (this.properties.user as any) as User
+      wx.navigateTo({
+        url: `../users/users?id=${user.login}&type=${UserListType.Followers}`
+      })
+    }
+  }
 })

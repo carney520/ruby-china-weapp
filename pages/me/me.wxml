@@ -4,13 +4,7 @@
     <view class="head">
       <profile user="{{currentUser}}"></profile>
     </view>
-    <view class="body">
-      <view class="tabs">
-        <view hover-class="hover">{{currentUser.following_count}} 正在关注</view>
-        <view hover-class="hover">{{currentUser.followers_count}} 关注者</view>
-        <view hover-class="hover">{{currentUser.favorites_count}} 收藏</view>
-      </view>
-    </view>
+    <view class="body"></view>
     <view class="footer">
       <button bind:tap="handleLogout">退出</button>
     </view>

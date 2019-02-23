@@ -1,0 +1,14 @@
+<empty wx:if="{{users.length === 0 && noMore}}"></empty>
+<view class="users">
+  <view wx:for="{{users}}" wx:key="id" class="user" hover-class="hover" data-id="{{item.login}}" bind:tap="handleOpenUser">
+    <image class="avatar" src="{{item.avatar_url}}" />
+    <view class="name">{{item.name || item.login}}</view>
+  </view>
+</view>
+<error-message wx:if="{{!!error}}" message="{{error.message}}"></error-message>
+<view class="placeholder" wx:if="{{loading}}">
+  <view class="row" wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="*this">
+    <view class="circle" />
+    <view class="line" style="vertical-align: top; height: 1.3em;" />
+  </view>
+</view>

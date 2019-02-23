@@ -6,3 +6,13 @@
   </view>
   <image class="avatar" src="{{user.avatar_url}}" />
 </view>
+
+<view class="tabs">
+  <view hover-class="hover" bind:tap="handleOpenFollowing">
+    {{user.following_count}} 正在关注
+  </view>
+  <view hover-class="hover" bind:tap="handleOpenFollowers">
+    {{user.followers_count}} 关注者
+  </view>
+  <view hover-class="hover">{{user.favorites_count}} 收藏</view>
+</view>
