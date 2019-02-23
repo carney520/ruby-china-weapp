@@ -82,12 +82,6 @@ Page({
     this.onReachBottom()
   },
 
-  handleItemClick(evt: WXBaseEvent<{ id: number }>) {
-    wx.navigateTo({
-      url: `../detail/detail?id=${evt.currentTarget.dataset.id}`
-    })
-  },
-
   handleToggleShowNode() {
     this.setData!({ showNode: !this.data.showNode })
   },

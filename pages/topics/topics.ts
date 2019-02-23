@@ -1,24 +1,27 @@
 /**
- * 用户列表展示
+ * 话题列表
  */
 import { get } from '../../request'
-import { UserListType } from '../../constants'
+import { TopicListType } from '../../constants'
 
 const LIMIT = 30
 const title = {
-  [UserListType.Following]: '正在关注',
-  [UserListType.Followers]: '关注者'
+  [TopicListType.Favorites]: '收藏',
+  [TopicListType.Topics]: '话题'
 }
 
+/**
+ * 列表
+ */
 Page({
   data: {
-    users: []
+    topics: []
   } as {
     id?: string
-    type?: UserListType
+    type?: TopicListType
+    topics: Topic[]
     loading?: boolean
     noMore?: boolean
-    users: User[]
     error?: Error
   },
 
@@ -35,13 +38,9 @@ Page({
     this.load()
   },
 
-  handleOpenUser(evt: WXBaseEvent<{ id: string }>) {
-    wx.navigateTo({ url: `../user/user?id=${evt.currentTarget.dataset.id}` })
-  },
-
   async load() {
-    const { noMore, loading } = this.data
-    if (noMore || loading) {
+    const { loading, noMore } = this.data
+    if (loading || noMore) {
       return
     }
 
@@ -49,13 +48,12 @@ Page({
       this.setData!({ loading: true, error: null })
       const url = this.getUrl()
       const params = {
-        offset: this.data.users.length,
+        offset: this.data.topics.length,
         limit: LIMIT
       }
-      const res = await get<{ [key: string]: User[] }>(url, params)
-      const list = res[this.data.type!]
-      const noMore = list.length < LIMIT
-      this.setData!({ noMore, users: this.data.users.concat(list) })
+      const res = await get<{ topics: Topic[] }>(url, params)
+      const noMore = res.topics.length < LIMIT
+      this.setData!({ noMore, topics: this.data.topics.concat(res.topics) })
     } catch (error) {
       this.setData!({ error })
     } finally {
@@ -65,8 +63,8 @@ Page({
 
   getUrl() {
     const { id, type } = this.data
-    return type === UserListType.Following
-      ? `/api/v3/users/${id}/following`
-      : `/api/v3/users/${id}/followers`
+    return type === TopicListType.Favorites
+      ? `/api/v3/users/${id}/favorites`
+      : `/api/v3/users/${id}/topics`
   }
 })

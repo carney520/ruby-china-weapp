@@ -1,0 +1,16 @@
+<view class="list-item" hover-class="list-item-hover" data-id="{{topic.id}}" bind:tap="handleItemClick">
+  <view class="list-item__head">
+    <view class="user-info">
+      <image src="{{topic.user.avatar_url}}" lazy-load="{{true}}" />
+      <text>{{topic.user.name || topic.user.login}}</text>
+    </view>
+    <text class="category">{{topic.node_name}}</text>
+  </view>
+  <view class="list-item__body">
+    <view class="title">
+      <image wx:if="{{!!topic.excellent}}" src="../../assets/gem.svg" />
+      <text>{{topic.title}}</text>
+    </view>
+    <text class="reply">{{topic.replies_count}}</text>
+  </view>
+</view>

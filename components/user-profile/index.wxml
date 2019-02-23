@@ -14,5 +14,6 @@
   <view hover-class="hover" bind:tap="handleOpenFollowers">
     {{user.followers_count}} 关注者
   </view>
-  <view hover-class="hover">{{user.favorites_count}} 收藏</view>
+  <view hover-class="hover" bind:tap="handleOpenTopics" data-type="favorites">{{user.favorites_count}} 收藏</view>
+  <view hover-class="hover" bind:tap="handleOpenTopics" data-type="topics">{{user.topics_count}} 话题</view>
 </view>

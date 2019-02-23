@@ -3,6 +3,8 @@
  * TODO: 滚动
  * TODO: 分享
  * TODO: emoji展示
+ * TODO: 异常处理
+ * TODO: reply 删除
  */
 import request, { get, post } from '../../request'
 import { IApp } from '../../app'

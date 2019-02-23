@@ -5,7 +5,7 @@
     <view class="name">{{item.name || item.login}}</view>
   </view>
 </view>
-<error-message wx:if="{{!!error}}" message="{{error.message}}"></error-message>
+<error-message wx:if="{{!!error}}" message="{{error.message}}" bind:retry="load"></error-message>
 <view class="placeholder" wx:if="{{loading}}">
   <view class="row" wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="*this">
     <view class="circle" />

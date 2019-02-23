@@ -27,6 +27,14 @@ Component({
         url: `../users/users?id=${user.login}&type=${UserListType.Following}`
       })
     },
+    handleOpenTopics(evt: WXBaseEvent<{ type: string }>) {
+      const user = (this.properties.user as any) as User
+      wx.navigateTo({
+        url: `../topics/topics?id=${user.login}&type=${
+          evt.currentTarget.dataset.type
+        }`
+      })
+    },
     handleOpenFollowers() {
       const user = (this.properties.user as any) as User
       wx.navigateTo({

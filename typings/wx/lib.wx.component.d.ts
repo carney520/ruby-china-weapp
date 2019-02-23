@@ -43,7 +43,7 @@ declare namespace Component {
           }
     }
     methods: {
-      [key: string]: (this: ComponentInstance<D>, ...args: []) => any
+      [key: string]: (this: ComponentInstance<D>, ...args: any[]) => any
     }
   }
 

@@ -6,7 +6,8 @@
     "pages/me/me",
     "pages/reply/reply",
     "pages/login/login",
-    "pages/users/users"
+    "pages/users/users",
+    "pages/topics/topics"
   ],
   "window": {
     "navigationStyle": "custom",

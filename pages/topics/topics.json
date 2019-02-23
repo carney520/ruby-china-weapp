@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "empty": "../../components/empty",
+    "topic-item": "../../components/topic-item",
+    "error-message": "../../components/error-message"
+  },
+  "navigationStyle": "default",
+  "navigationBarTitleText": ""
+}

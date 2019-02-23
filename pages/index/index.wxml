@@ -1,32 +1,4 @@
-<template name="list-item">
-  <view class="list-item" hover-class="list-item-hover" data-id="{{id}}" bind:tap="handleItemClick">
-    <view class="list-item__head">
-      <view class="user-info">
-        <image src="{{user.avatar_url}}" lazy-load="{{true}}" />
-        <text>{{user.name || user.login}}</text>
-      </view>
-      <text class="category">{{node_name}}</text>
-    </view>
-    <view class="list-item__body">
-      <view class="title">
-        <image wx:if="{{!!excellent}}" src="../../assets/gem.svg" />
-        <text>{{title}}</text>
-      </view>
-      <text class="reply">{{replies_count}}</text>
-    </view>
-  </view>
-</template>
-<template name="placeholder">
-  <view class="placeholder">
-    <view wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}" wx:key="*this">
-      <view class="row">
-        <view class="left small circle" />
-        <view class="right small tiny line" />
-      </view>
-      <view class="long rect" />
-    </view>
-  </view>
-</template>
+<import src="../../placeholder.wxml" />
 <view class="nav-bar">
   <view class="nav-bar__overlay" />
   <view style="height: {{statusBarHeight}}px"></view>
@@ -79,12 +51,10 @@
   </scroll-view>
 </view>
 <view class="container">
-  <template wx:if="{{initialLoading}}" is="placeholder"></template>
-  <view class="empty" wx:if="{{topics.length === 0 && noMore}}">🦖暂无帖子</view>
-  <block wx:for="{{topics}}" wx:key="id">
-    <template is="list-item" data="{{...item}}"></template>
-  </block>
-  <error-message wx:if="{{!!error}}" message="列表加载失败: {{error.message || '网络错误'}}" bind:retry="handleRetry" />
+  <template wx:if="{{initialLoading}}" is="topics"></template>
+  <empty wx:if="{{topics.length === 0 && noMore}}" message="暂无话题"></empty>
+  <topic-item wx:for="{{topics}}" wx:key="id" topic="{{item}}"></topic-item>
+  <error-message wx:if="{{!!error}}" message="列表加载失败: {{error.message || '异常错误'}}" bind:retry="handleRetry" />
   <view class="footer loading" wx:if="{{loading}}">
     <loading size="24px" type="spinner" />
     <text>加载中...</text>

@@ -1,0 +1,52 @@
+.list-item {
+  padding: 30rpx 50rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.list-item-hover {
+  background-color: #eee;
+}
+
+.list-item__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: gray;
+}
+
+.list-item__head .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.list-item__head .user-info image {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
+.list-item__body {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.list-item__body .title {
+  flex: 1;
+  font-size: 16px;
+}
+
+.list-item__body .title image{
+  width: 1em;
+  height: 1em;
+  vertical-align: sub;
+  margin-right: 0.4em;
+}
+
+.list-item__body .reply {
+  min-width: 30px;
+  text-align: right;
+  color: gray;
+  font-size: 13px;
+}

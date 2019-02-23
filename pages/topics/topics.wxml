@@ -1,0 +1,5 @@
+<import src="../../placeholder.wxml" />
+<topic-item wx:for="{{topics}}" wx:key="id" topic="{{item}}"></topic-item>
+<error-message wx:if="{{!!error}}" message="列表加载失败: {{error.message}}" bind:retry="load" />
+<empty wx:if="{{topics.length === 0 && noMore}}" message="暂无话题"></empty>
+<template wx:if="{{loading}}" is="topics"></template>
