@@ -61,7 +61,6 @@ Page({
       const url = `/api/v3/topics/${this.data.id}`
       const detail = await get<{ meta: TopicMeta; topic: TopicDetail }>(url)
       this.setData!({ topic: detail.topic, meta: detail.meta })
-      wx.setNavigationBarTitle({ title: detail.topic.title })
     } catch (err) {
       // TODO: 异常处理
     } finally {

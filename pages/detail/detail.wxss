@@ -79,9 +79,9 @@
 }
 
 .actions .action {
-  width: 33px;
-  height: 33px;
-  border-radius: 33px;
+  width: 38px;
+  height: 38px;
+  border-radius: 38px;
   display: flex;
   flex-direction: column;
   align-items: center;

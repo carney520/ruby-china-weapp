@@ -85,7 +85,7 @@
       </view>
     </view>
     <view class="body">
-      <wemark md="{{topic.body}}" type="wemark" highlight></wemark>
+      <wemark md="{{topic.body}}" type="wemark" link highlight></wemark>
     </view>
   </view>
   <view class="actions">

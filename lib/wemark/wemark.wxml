@@ -6,9 +6,9 @@
 			<!-- 代码高亮 -->
 			<text class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type&&renderBlock.highlight}}">{{renderInline.content}}</text>
 			<text class="wemark_inline_code_text" wx:if="{{!renderInline.type}}">{{renderInline}}</text>
-			<navigator class="wemark_inline_link" url="{{renderInline.data.href}}" wx:if="{{renderInline.type === 'link'}}">{{renderInline.content}}</navigator>
+			<view class="wemark_inline_link" hover-class="hover" data-url="{{renderInline.data.href}}" wx:if="{{renderInline.type === 'link'}}" bind:tap="openlink">{{renderInline.content}}</view>
 			<view class="wemark_inline_jumbotron" wx:if="{{renderInline.type === 'image'}}">
-        <image mode="widthFix" class="wemark_inline_image" src="{{renderInline.src}}" ></image>
+        <image mode="widthFix" class="wemark_inline_image" src="{{renderInline.src}}" data-src="{{renderInline.src}}" bind:tap="preview" ></image>
       </view>
 		</block>
 		<block wx:if="{{!renderBlock.isArray}}">

@@ -1,7 +1,10 @@
 @import "prism.wxss";
 
 .wemark_wrapper {
-	margin: 10px 40rpx;
+	width: 100%;
+	overflow-x: hidden;
+	box-sizing: border-box;
+	padding: 10px 40rpx;
 	font-size: 15px;
 	line-height: 1.7;
 }
@@ -74,11 +77,13 @@
 
 .wemark_block_ul_li_p::before {
 	content: '▪ ';
+	font-size: 12px;
 }
 
 .wemark_block_ul_li_ul_li_p::before,
 .wemark_block_ol_li_ul_li_p::before {
 	content: '∙ ';
+	font-size: 12px;
 }
 
 .wemark_block_ul_li_ul_li_p,
@@ -192,8 +197,12 @@
 
 .wemark_inline_link {
 	display: inline;
-	color: blue;
+	color: #2275da;
 	word-wrap: break-word;
+}
+
+.wemark_inline_link.hover {
+	text-decoration: underline;
 }
 
 .wemark_inline_jumbotron {
