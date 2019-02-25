@@ -9,6 +9,8 @@
 }
 
 .reply .textarea-wrapper {
+  box-sizing: border-box;
+  width: 100%;
   margin-left: -40rpx;
   margin-right: -40rpx;
 }
